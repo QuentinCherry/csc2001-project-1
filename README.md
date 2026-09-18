@@ -1,6 +1,6 @@
 # Journal
 ## Initial Steps (Monday/Wed)
-Started by implementing [Session](src/main/java/Session.java) and [SessionList](src/main/java/SessionList.java)
+Started by implementing [Session](Module/src/main/java/Session.java) and [SessionList](Module/src/main/java/SessionList.java)
 ## Session
 Was a very simple record class, containing all required fields and a custom toString.
 ## SessionList
