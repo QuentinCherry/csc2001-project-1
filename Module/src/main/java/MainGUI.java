@@ -119,12 +119,16 @@ public static class MainGUI extends JFrame {
 
     // display all sessions in the output area
     private void displaySessions() {
-        outputArea.setText(" ");
-        for(int i = 0; i<sessions.len(); i++){
-            outputArea.append(sessions.getSession(i).toString());
-            if(i<sessions.len()) {
-                outputArea.append("\n--------------------\n");
+        outputArea.setText("");
+        if(!sessions.isEmpty()) {
+            for (int i = 0; i < sessions.len(); i++) {
+                outputArea.append(sessions.getSession(i).toString());
+                if (i < sessions.len()) {
+                    outputArea.append("\n--------------------\n");
+                }
             }
+        }else{
+            outputArea.setText("No Sessions Stored");
         }
     }
 

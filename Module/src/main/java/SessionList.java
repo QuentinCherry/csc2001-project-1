@@ -8,10 +8,8 @@ public class SessionList {
         this.next = next;
     }
     public Session append(Session data){
-        if(idIndex(data.id())!=-1){
-            throw new IllegalArgumentException("ID already in use");
-        }
-        if(this.data ==null){
+        checkInputs(data);
+        if(this.data == null){
             this.data = data;
             return data;
         }
@@ -22,6 +20,22 @@ public class SessionList {
         currentNode.next = new SessionList(data, null);
         return data;
     }
+
+    public boolean isEmpty(){
+        return(this.data==null);
+    }
+    private void checkInputs(Session data){
+        if(this.data != null && idIndex(data.id())!=-1){
+            throw new IllegalArgumentException("ID already in use");
+        }
+        if(data.id()<0){
+            throw new IllegalArgumentException("ID may not be negative");
+        }
+        if(data.maxParticipants()<1){
+            throw new IllegalArgumentException("Max Capacity Must be 1 or greater");
+        }
+    }
+
     public int len(){
         SessionList currentNode = this;
         int len = 0;
@@ -71,7 +85,6 @@ public class SessionList {
         for(int i = 0; i<this.len(); i++){
             if(id == currentNode.data.id()){
                 return i;
-
             }
             currentNode = currentNode.next;
         }
@@ -97,6 +110,7 @@ public class SessionList {
             if(Objects.equals(currentNode.data.mentor(), mentorName)){
                 output.append(currentNode.data);
             }
+            currentNode = currentNode.next;
         }
         return output;
     }
