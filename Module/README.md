@@ -29,3 +29,5 @@ Is the journal supposed to emulate commit messages?
 Now implemented searching functions, They already existed as helpers I just needed to call them
 
 Implemented searchByMentor in SessionList
+
+Added a checkInputs method that verifys all information entered is valid, called in append()
